@@ -28,7 +28,6 @@ const App = ()=> {
   },[])
 
   const assignTrainer = async(trainerId, pokemonId) => {
-    console.log(trainerId, pokemonId)
     const chosenPoke = pokemons.find((poke) => {
       return pokemonId == poke.id
     })
@@ -40,6 +39,11 @@ const App = ()=> {
     setPokemons(pokemons.map(poke => poke.id === pokemon.id ? pokemon : poke))
   }
 
+  const removeTrainer = async(unassigned) => {
+    const response = await axios.put(`/api/pokemons/${unassigned.id}`, unassigned);
+    const nowWild = response.data;
+    setPokemons(pokemons.map(pokemon => pokemon.id === nowWild.id ? nowWild : pokemon));
+  }
 
 
   return (
@@ -56,7 +60,7 @@ const App = ()=> {
         <Route path='/pokemon' element={<Pokemons pokemons={pokemons}/>} />
         <Route path='/trainers' element={<Trainers trainers={trainers} />}/>
         <Route path='/assign' element={<Assign pokemons={pokemons} trainers={trainers} assignTrainer={assignTrainer}/>}/>
-        <Route path='/pokemon/:id' element={<Pokemon pokemons={pokemons} trainers={trainers}/>}/>
+        <Route path='/pokemon/:id' element={<Pokemon pokemons={pokemons} trainers={trainers} removeTrainer={removeTrainer}/>}/>
         <Route path='/trainers/:id' element={<Trainer trainers={trainers} pokemons={pokemons}/>}/>
       </Routes>
     </div>

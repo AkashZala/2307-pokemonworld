@@ -8,8 +8,6 @@ const Assign = ({pokemons, trainers, assignTrainer}) => {
         return poke.trainer_id === null
     })
 
-    console.log(pokeNoTrain)
-
     const assign = (ev) => {
         ev.preventDefault()
         assignTrainer(selectedTrainer, selectedPoke)
@@ -41,7 +39,7 @@ const Assign = ({pokemons, trainers, assignTrainer}) => {
                     }
                 </select>
                 <div>
-                    <button type="submit">Assign!</button>
+                    <button type="submit" disabled={ !selectedPoke || !selectedTrainer }>Assign!</button>
                 </div>
             </form>
         </div>
