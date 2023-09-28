@@ -51,6 +51,12 @@ const App = ()=> {
     setTrainers([...trainers, createdTrainer]);
   }
 
+  const createPokemon = async(newP) => {
+    const response = await axios.post('/api/pokemons', newP);
+    const createdPokemon = response.data;
+    setPokemons([...pokemons, createdPokemon]);
+  }
+
 
   return (
     <div>
@@ -63,7 +69,7 @@ const App = ()=> {
       </nav>
 
       <Routes>
-        <Route path='/pokemon' element={<Pokemons pokemons={pokemons}/>} />
+        <Route path='/pokemon' element={<Pokemons pokemons={pokemons} createPokemon={createPokemon}/>} />
         <Route path='/trainers' element={<Trainers trainers={trainers} createTrainer={createTrainer}/>}/>
         <Route path='/assign' element={<Assign pokemons={pokemons} trainers={trainers} assignTrainer={assignTrainer}/>}/>
         <Route path='/pokemon/:id' element={<Pokemon pokemons={pokemons} trainers={trainers} removeTrainer={removeTrainer}/>}/>

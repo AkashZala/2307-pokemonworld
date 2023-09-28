@@ -2,14 +2,14 @@ body {
   font-family: verdana;
 }
 
-nav, .trainersPage{
+nav, .trainersPage, .pokesPage{
   display: flex;
 }
 
-nav > *, .trainersPage > * {
+nav > *, .trainersPage > *, .pokesPage > *{
   flex: 1;
 }
 
-#newTform {
+#newTform, #newPform {
   padding-top: 2rem;
 }
