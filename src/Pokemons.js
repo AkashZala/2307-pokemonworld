@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import NewPokemon from "./NewPokemon";
 
 
-const Pokemons = ({ pokemons, createPokemon }) => {
+const Pokemons = ({ pokemons, createWildPokemon }) => {
   return (
     <div className="pokesPage">
       <div>
@@ -20,7 +20,7 @@ const Pokemons = ({ pokemons, createPokemon }) => {
         }
       </div>
       <div id='newPform'>
-        <NewPokemon createPokemon={createPokemon}/>
+        <NewPokemon createWildPokemon={createWildPokemon}/>
       </div>
     </div>
   )

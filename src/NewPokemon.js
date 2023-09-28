@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
-const NewPokemon = ({createPokemon}) => {
+const NewPokemon = ({createWildPokemon}) => {
     const [newPokemon, setNewPokemon] = useState('');
 
     const newP = (event) => {
         event.preventDefault();
-        const newP = { name: newPokemon };
-        createPokemon(newP);
+        const newP = { name: newPokemon, trainer_id: null };
+        createWildPokemon(newP);
         setNewPokemon('');
     }
 
