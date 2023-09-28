@@ -21,11 +21,40 @@ router.get('/pokemons', async(req,res,next) => {
         FROM trainers
       `
       const response = await client.query(SQL)
-      res.send(response.rows)
+      res.send(response.rows);
     } catch (error) {
       next(error)
     }
   })
+
+  router.post('/pokemons', async(req, res, next) => {
+    try {
+      const SQL = `
+        INSERT into pokemons(name, trainer_id)
+        VALUES($1, $2)
+        RETURNING *
+      `;
+      const response = await client.query(SQL, [req.body.name, req.body.trainer_id]);
+      res.send(response.rows[0]);
+    } catch (error) {
+      next(error)
+    }
+  });
+
+  router.post('/trainers', async(req,res,next) => {
+    try {
+      const SQL = `
+        INSERT into trainers(name) 
+        VALUES($1)
+        RETURNING *
+      `;
+      const response = await client.query(SQL, [req.body.name]);
+      res.send(response.rows[0]);
+    } catch(error) {
+      next(error)
+    }
+  });
+
 
   router.put('/pokemons/:id', async(req,res,next) => {
     try {

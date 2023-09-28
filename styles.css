@@ -2,10 +2,14 @@ body {
   font-family: verdana;
 }
 
-nav{
+nav, .trainersPage{
   display: flex;
 }
 
-nav > * {
+nav > *, .trainersPage > * {
   flex: 1;
+}
+
+#newTform {
+  padding-top: 2rem;
 }

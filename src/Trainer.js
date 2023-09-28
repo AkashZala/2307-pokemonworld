@@ -7,6 +7,7 @@ const Trainer = ({trainers, pokemons}) => {
     const trainer = trainers.find((train) => {
         return train.id === idNum
     })
+    
 
     const pokeList = pokemons.filter((pokemon) => {
         return pokemon.trainer_id === idNum
